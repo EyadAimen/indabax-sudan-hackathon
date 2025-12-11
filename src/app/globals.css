@@ -1,14 +1,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-family: 'Roboto', sans-serif;
+  
+  --white-color: #ffff;
+  --dark-color: #121212;
+  --black-color: #000; 
+  --primary-color: #ef7205;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 html,
 body {
@@ -30,9 +31,21 @@ body {
   margin: 0;
 }
 
+p {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--white-color);
+}
+
+.p-dark {
+  color: var(--white-black);
+
+}
+
 a {
-  color: inherit;
+  color: var(--white-color);
   text-decoration: none;
+
 }
 
 @media (prefers-color-scheme: dark) {

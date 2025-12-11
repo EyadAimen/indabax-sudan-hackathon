@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "IndabaX Sudan Hackathon",
+  title: "IndabaX Sudan Hackathon 2025",
   description: "IndabaX Sudan hackathon tracks instructions",
 };
 

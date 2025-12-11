@@ -1,0 +1,47 @@
+.page {
+  padding: 11rem 1rem 0rem 1rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.heading {
+  
+  
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleOrdange {
+
+  color: var(--primary-color);
+}
+
+.cardSection {
+  margin: 0rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.line {
+  border: none;
+  background-color: #e6e6e6;
+  margin: 3rem 0rem;
+  height: 0.2rem;
+}
+.subtitle {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}

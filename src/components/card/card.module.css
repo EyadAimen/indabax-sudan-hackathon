@@ -1,0 +1,49 @@
+
+.cardContainer {
+    
+    --text-dim: #6B7280;   
+
+    background-color: var(--white-color);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem; 
+    position: relative;
+    cursor: pointer;
+    flex: 1 1 300px;
+  max-width: 400px;
+  min-width: 280px;
+    border: 1px solid var(--text-dim);
+    margin: 1rem;
+    transition: scale 0.2s ease;
+}
+
+/* Optional hover effect */
+.cardContainer:hover {
+    border: 1px solid var(--text-dim);
+    scale: 1.05;
+}
+
+
+.cardContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10;
+    width: 25%;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+
+.trackTitle {
+    color: var(--dark-color);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.trackDescription {
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+
+}

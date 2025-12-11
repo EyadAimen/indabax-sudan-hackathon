@@ -1,27 +1,38 @@
-import Image from "next/image";
+"use client";
+import Header from "@/components/header/header";
 import styles from "./page.module.css";
-import logo from "../assets/ixs-logo.png";
+import Card from "@/components/card/card";
+import { useRouter } from "next/navigation";
+
 
 
 export default function Home() {
+  const router = useRouter();
+  
+  const handleCardClick = (route: string)=> {
+    router.push(route);
+  }
   return (
     <div className={styles.page}>
-      <header>
-        <Image 
-          src={logo} 
-          alt="IndabaX Sudan logo"
-          
-        />
-        <nav>
-          <ul>
-            <li>Track 1</li>
-            <li>Track 2</li>
-            <li>Track 3</li>
-            <li>Track 4</li>
-            <li>Track 5</li>
-          </ul>
-        </nav>
-      </header>
+      
+      {/* Header of the web */}
+      <Header />
+      <main className={styles.page}>
+        <div className={styles.heading}>
+          <h2>INDABAX SUDAN <span className={styles.titleOrdange}>HACKATHON</span></h2>
+          <p className="p-dark">Join us on a wonderful IndabaX Sudan hackathon journey with multiple tracks</p>
+        </div>
+        <div className={styles.cardSection}>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science" onTap={()=>handleCardClick("track1")}/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
+
+        </div>
+
+      </main>
+      
     </div>
   );
 }
