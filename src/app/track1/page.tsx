@@ -17,14 +17,14 @@ export default function Home() {
       <Header activeID={1}/>
       <main className={styles.page}>
         <h1>Track 1: <span className={styles.titleOrdange}>AI ML</span></h1>
-        <p className="p-dark">AI and ML - create intelligent solutions leveraging artificial intelligence and data science</p>
+        <p className={`p-dark ${styles.pMargin}`}>AI and ML - create intelligent solutions leveraging artificial intelligence and data science</p>
         <hr className={styles.line}/>
         <div>
           <div className={styles.subtitle}>
             <div className={styles.circle}></div>
             <h2>About Track</h2>
           </div>
-          <p className="p-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p className={`p-dark ${styles.pMargin}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
 
         <hr className={styles.line}/>
@@ -33,7 +33,7 @@ export default function Home() {
             <div className={styles.circle}></div>
             <h2>Instructions</h2>
           </div>
-          <p className="p-dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p className={`p-dark ${styles.pMargin}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
       </main>
       

@@ -15,6 +15,10 @@
   align-items: center;
 }
 
+.pMargin {
+  margin-top: 1rem;
+}
+
 .titleOrdange {
 
   color: var(--primary-color);

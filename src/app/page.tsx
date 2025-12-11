@@ -19,15 +19,15 @@ export default function Home() {
       <Header />
       <main className={styles.page}>
         <div className={styles.heading}>
-          <h2>INDABAX SUDAN <span className={styles.titleOrdange}>HACKATHON</span></h2>
-          <p className="p-dark">Join us on a wonderful IndabaX Sudan hackathon journey with multiple tracks</p>
+          <h1 className={styles.head1}>INDABAX SUDAN <span className={styles.titleOrdange}>HACKATHON</span></h1>
+          <p className={`p-dark ${styles.par}`}>Join us on a wonderful IndabaX Sudan hackathon journey with multiple tracks</p>
         </div>
         <div className={styles.cardSection}>
           <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science" onTap={()=>handleCardClick("track1")}/>
-          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
-          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
-          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
-          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science"/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science" onTap={()=>handleCardClick("track1")}/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science" onTap={()=>handleCardClick("track1")}/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science" onTap={()=>handleCardClick("track1")}/>
+          <Card title="Track 1" description="AI and ML - create intelligent solutions leveraging artificial intelligence and data science" onTap={()=>handleCardClick("track1")}/>
 
         </div>
 

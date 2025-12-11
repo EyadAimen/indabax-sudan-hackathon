@@ -13,13 +13,17 @@
   min-width: 280px;
     border: 1px solid var(--text-dim);
     margin: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transition: scale 0.2s ease;
 }
 
 /* Optional hover effect */
 .cardContainer:hover {
-    border: 1px solid var(--text-dim);
+    border: 1px solid var(--primary-color);
     scale: 1.05;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 
