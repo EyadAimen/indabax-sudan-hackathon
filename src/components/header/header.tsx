@@ -46,10 +46,10 @@ function Header ({ activeID }: HeaderProps) {
     }
     
     const tracks = [
-        {id: 1, name: "track 1", url: "/track1"},
-        {id: 2, name: "track 2", url: "/track2"},
-        {id: 3, name: "track 3", url: "/track3"},
-        {id: 4, name: "track 4", url: "/track4"}
+        {id: 1, name: "track 1", url: "track1"},
+        {id: 2, name: "track 2", url: "track2"},
+        {id: 3, name: "track 3", url: "track3"},
+        {id: 4, name: "track 4", url: "track4"}
     ]
 
     
