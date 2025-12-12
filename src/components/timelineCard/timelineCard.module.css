@@ -4,7 +4,7 @@
     border-radius: 1rem;
     padding: 1.5rem 2rem; 
     position: relative;
-    width: 30vw;
+    min-width: 30vw;
     border: 1px solid var(--primary-color);
     margin: 1rem;
     box-shadow: 0 4px 6px -1px var(--primary-color), 
@@ -58,9 +58,50 @@
 }
 
 
-.timelineList li::marker{
-    color: var(--primary-color);
+/* 1. THE LIST CONTAINER */
+.timelineList {
+    position: relative; /* Anchors the vertical line */
+    list-style: none;   /* Hide the default markers */
+    padding: 0;
+    margin: 0;
 }
+
+
+.timelineList::before {
+    content: '';
+    position: absolute;
+    top: 10;
+    bottom: 0;
+    left: 10px; 
+    width: 4px;
+    border-radius: 1rem;
+    background-color: var(--text-color);
+    
+    z-index: 0; /* Puts it BEHIND the dots */
+}
+
+
+.timelineList li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.2rem; 
+  
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    
+    z-index: 1; 
+    border: 3px solid var(--card-color, white); 
+}
+
+.timelineList li {
+    position: relative;
+    padding-left: 2.5rem; 
+    margin-bottom: 2rem;
+}
+
 .date {
     color: var(--primary-color);
     font-weight: 600;
@@ -89,7 +130,7 @@
 
 @media only screen and (max-width: 768px) {
     .cardContainer {
-        width: 100%;
+        width: 100vw;
         margin: 1rem 0;
     }
     

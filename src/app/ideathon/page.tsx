@@ -143,6 +143,7 @@ export default function Home() {
                 </ul>
               </p>
             </div>
+            <hr className={styles.line}/>
             {/* end of left hand side content */}
             </div>
             {/* right hand side content */}

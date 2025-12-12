@@ -15,7 +15,7 @@ type HeaderProps = {
 function Header ({ activeID }: HeaderProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-    const [isMenuHidden, setIsMenuHidden] = useState(false);
+    const [isMenuHidden, setIsMenuHidden] = useState(true);
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 60) {
