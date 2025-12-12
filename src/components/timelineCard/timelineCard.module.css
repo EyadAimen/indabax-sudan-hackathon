@@ -130,7 +130,7 @@
 
 @media only screen and (max-width: 768px) {
     .cardContainer {
-        width: 100vw;
+        width: 100%;
         margin: 1rem 0;
     }
     

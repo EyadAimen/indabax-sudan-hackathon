@@ -16,7 +16,7 @@ export default function Home() {
     <div className={styles.page}>
       
       {/* Header of the web */}
-      <Header />
+      <Header activeID={0}/>
       <main className={styles.page}>
         <div className={styles.heading}>
           <h1 className={styles.head1}>INDABAX SUDAN <span className={styles.titleOrdange}>HACKATHON</span></h1>

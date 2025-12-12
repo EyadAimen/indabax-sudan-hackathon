@@ -1,3 +1,4 @@
+import { RxCalendar } from "react-icons/rx";
 import styles from "./timelineCard.module.css";
 
 type CardProps = {
@@ -9,7 +10,7 @@ type CardProps = {
 function TimelineCard({ timeline }: CardProps) {
     return (
         <div className={styles.cardContainer}>
-            <h3 className={styles.trackTitle}>Timeline</h3>
+            <h3 className={styles.trackTitle}><RxCalendar color="#ef7205" size={22}/> Timeline</h3>
             <h4 className={styles.trackTitle}>Competition Period: 20 - 23 DEC</h4>
             <div className={styles.timelineContainer}>
                 <div className={styles.verticalLine}></div>

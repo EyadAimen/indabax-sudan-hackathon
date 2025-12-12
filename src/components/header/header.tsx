@@ -47,6 +47,7 @@ function Header ({ activeID }: HeaderProps) {
     }
     
     const tracks = [
+        {id: 0, name: "Home", url: "/"},
         {id: 1, name: "ideathon", url: "/ideathon"},
         {id: 2, name: "track 2", url: "/track2"},
         {id: 3, name: "track 3", url: "/track3"},

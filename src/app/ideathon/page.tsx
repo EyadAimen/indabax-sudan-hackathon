@@ -5,6 +5,7 @@ import Card from "@/components/card/card";
 import { useRouter } from "next/navigation";
 import PeopleCard from "@/components/peopleCard/peopleCard";
 import TimelineCard from "@/components/timelineCard/timelineCard";
+import { RxCheck, RxCheckCircled, RxFileText, RxInfoCircled, RxListBullet, RxPerson, RxStar } from "react-icons/rx";
 
 
 
@@ -59,7 +60,7 @@ export default function Home() {
           <div>
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}></div>
+                <div className={styles.circle}><RxInfoCircled color="#121212" size={20} /></div>
                 <h2>About Track</h2>
               </div>
               <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -68,7 +69,7 @@ export default function Home() {
             <hr className={styles.line}/>
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}></div>
+                <div className={styles.circle}><RxListBullet color="#121212" size={20} /></div>
                 <h2>Instructions</h2>
               </div>
               <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -79,7 +80,7 @@ export default function Home() {
 
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}></div>
+                <div className={styles.circle}><RxCheck color="#121212" size={20} /></div>
                 <h2>Participation Requirements</h2>
               </div>
               <p className={styles.pMargin}>
@@ -96,7 +97,7 @@ export default function Home() {
             <hr className={styles.line}/>
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}></div>
+                <div className={styles.circle}><RxStar color="#121212" size={20} /></div>
                 <h2>Why You Should Join</h2>
               </div>
               <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
@@ -105,7 +106,7 @@ export default function Home() {
             <hr className={styles.line}/>
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}></div>
+                <div className={styles.circle}><RxFileText color="#121212" size={20} /></div>
                 <h2>Full Proposal Requirements</h2>
               </div>
               <p className={styles.pMargin}>
@@ -131,7 +132,7 @@ export default function Home() {
             <hr className={styles.line}/>
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}></div>
+                <div className={styles.circle}><RxPerson color="#121212" size={20} /></div>
                 <h2>Team Structure</h2>
               </div>
               <p className={styles.pMargin}>

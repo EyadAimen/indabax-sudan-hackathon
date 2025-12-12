@@ -43,6 +43,10 @@
   margin-right: 0.5rem;
   border-radius: 50%;
   background-color: var(--primary-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .list {

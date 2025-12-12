@@ -21,8 +21,8 @@
 .cardContainer:hover {
     border: 1px solid var(--primary-color);
     scale: 1.05;
-    box-shadow: 0 20px 25px -5px var(--primary-color), 
-                0 10px 10px -5px var(--primary-color);
+    box-shadow: 0 10px 25px -5px var(--primary-color), 
+                0 0px 10px -5px var(--primary-color);
 }
 
 
