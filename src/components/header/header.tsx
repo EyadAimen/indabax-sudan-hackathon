@@ -94,6 +94,10 @@ function Header ({ activeID }: HeaderProps) {
 
                 </nav>
             </div>
+            <div 
+                className={`${styles.backdrop} ${!isMenuHidden ? styles.backdropVisible : ""}`}
+                onClick={() => setIsMenuHidden(true)} 
+            />
             {  isMobile && (
                 <div className={`${styles.navBarItems} ${isMenuHidden ? styles.hidden : styles.visible}`} >
                     {tracks.map((track) => <Link href={track.url}><li className={activeID === track.id ? styles.activeNavBarItemMobile : styles.navBarItemMobile}>{track.name}</li></Link>)}
