@@ -121,7 +121,7 @@
         justify-content: space-evenly;
         align-items: center;
         
-        background-color: var(--dark-color);
+        background-color: transparent;
         height: 8rem;
     
         z-index: 1000;
@@ -133,7 +133,7 @@
     
     /* animation changes when it scrolls */
     .scrolled {
-        
+        background-color: var(--dark-color);
         height: 5rem;   
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -151,6 +151,7 @@
         letter-spacing: 0.2rem;
         margin-left: 1rem; 
         font-weight: bold;
+        color: var(--white-color);
     }
     
     /* image styles */

@@ -1,12 +1,15 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #171717;
+  --foreground: #ffffff;
   font-family: 'Roboto', sans-serif;
   
   --white-color: #ffff;
   --dark-color: #121212;
   --black-color: #000; 
   --primary-color: #ef7205;
+  --card-color: #1e1e1e;
+  --text-color: #6b7280;
+  --light-text-color: #c2c2c2;
 }
 
 
@@ -31,15 +34,20 @@ body {
   margin: 0;
 }
 
-p {
-  font-weight: 300;
-  font-size: 1rem;
+h1, h2, h3, h4 {
+  font-weight: 600;
   color: var(--white-color);
 }
 
-.p-dark {
-  color: var(--white-black);
+p {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--light-text-color);
+  line-height: 1.5;
+}
 
+.p-dark {
+  color: var(--text-color);
 }
 
 a {

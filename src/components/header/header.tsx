@@ -18,7 +18,7 @@ function Header ({ activeID }: HeaderProps) {
     const [isMenuHidden, setIsMenuHidden] = useState(false);
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 160) {
+            if (window.scrollY > 60) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -47,7 +47,7 @@ function Header ({ activeID }: HeaderProps) {
     }
     
     const tracks = [
-        {id: 1, name: "track 1", url: "/track1"},
+        {id: 1, name: "ideathon", url: "/ideathon"},
         {id: 2, name: "track 2", url: "/track2"},
         {id: 3, name: "track 3", url: "/track3"},
         {id: 4, name: "track 4", url: "/track4"}

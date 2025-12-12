@@ -10,7 +10,7 @@ function Card({ title, description, onTap }: CardProps) {
     return (
         <div className={styles.cardContainer} onClick={onTap}>
             <h3 className={styles.trackTitle}>{title}</h3>
-            <p className="p-dark">{description}</p>
+            <p className={styles.trackDescription}>{description}</p>
         </div>
     )
 }

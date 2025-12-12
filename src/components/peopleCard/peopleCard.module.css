@@ -1,16 +1,14 @@
 
 .cardContainer {
-     
+    
+      
 
     background-color: var(--card-color);
     border-radius: 1rem;
     padding: 1.5rem 2rem; 
     position: relative;
-    cursor: pointer;
-    flex: 1 1 300px;
-  max-width: 400px;
-  min-width: 280px;
-    border: 1px solid var(--text-dim);
+    /* min-width: 500px; */
+    border: 1px solid var(--primary-color);
     margin: 1rem;
     box-shadow: 0 4px 6px -1px var(--primary-color), 
                 0 2px 4px -1px var(--primary-color);
@@ -18,12 +16,7 @@
 }
 
 /* Optional hover effect */
-.cardContainer:hover {
-    border: 1px solid var(--primary-color);
-    scale: 1.05;
-    box-shadow: 0 20px 25px -5px var(--primary-color), 
-                0 10px 10px -5px var(--primary-color);
-}
+
 
 
 .cardContainer::before {
@@ -37,6 +30,7 @@
 }
 
 .trackTitle {
+    
     font-size: 1.75rem;
     font-weight: 700;
     margin-top: 0.5rem;
@@ -44,8 +38,45 @@
 }
 
 .trackDescription {
-    color: var(--light-text-color);
+    color: var(--text-dim);
     font-size: 1rem;
     line-height: 1.6;
 
+}
+
+.personContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.personName {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.personBio {
+    margin: 0;
+    font-size: 0.8rem;
+
+}
+
+.personImage {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: grey;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .cardContainer {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
 }

@@ -1,0 +1,96 @@
+
+.cardContainer {
+    background-color: var(--card-color);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem; 
+    position: relative;
+    width: 30vw;
+    border: 1px solid var(--primary-color);
+    margin: 1rem;
+    box-shadow: 0 4px 6px -1px var(--primary-color), 
+                0 2px 4px -1px var(--primary-color);
+    transition: scale 0.2s ease;
+}
+
+/* Optional hover effect */
+
+
+
+.cardContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10;
+    width: 25%;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+
+.trackTitle {
+    
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.trackDescription {
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+
+}
+
+.personContainer {
+    margin-bottom: 1rem;
+    
+}
+
+.personContainer::marker {
+    color: var(--primary-color);
+    
+}
+
+.personName {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+
+.timelineList li::marker{
+    color: var(--primary-color);
+}
+.date {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.description {
+    color: var(--white-color);
+    font-weight: 500;
+}
+
+.personBio {
+    margin: 0;
+    font-size: 0.8rem;
+
+}
+
+.personImage {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: grey;
+    object-fit: cover;
+    margin-right: 1rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .cardContainer {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
+}
