@@ -3,8 +3,8 @@ import { useState } from "react";
 import Header from "@/components/header/header";
 import CustomButton from "@/components/button/button";
 import TextField from "@/components/textField/textField";
-import { submitToGoogleSheets } from "../../utils/googlesheetService";
 import styles from "./page.module.css";
+import { submitToGoogleSheets } from "@/utils/googlesheetService";
 
 interface Member {
   name: string;
@@ -123,7 +123,7 @@ function Registration() {
 
   const handleSubmit = async () => {
     if (!validateForm()) {
-      setSubmitMessage("Please fix the errors before submitting");
+      setSubmitMessage("Please Enter the missing data in the form.");
       return;
     }
 
@@ -148,11 +148,27 @@ function Registration() {
         timestamp: new Date().toISOString()
       };
 
-      // TODO: Replace with your actual Google Sheets API endpoint
       const response = await submitToGoogleSheets(dataToSubmit);
-      
-      if (!response)
+      if(!response)
         setSubmitMessage("Failed to submit registration. Please try again.");
+      else {
+        setSubmitMessage("Registration submitted successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          members: [
+            { name: "", email: "", phone: "" },
+            { name: "", email: "", phone: "" },
+            { name: "", email: "", phone: "" },
+            { name: "", email: "", phone: "" }
+          ],
+          description: "",
+          businessModel: "",
+          poc: ""
+        });
+        setErrors({});
+      }
       
     } catch (error) {
       console.error("Submission error:", error);
@@ -197,7 +213,7 @@ function Registration() {
                 />
                 <TextField
                   label="Phone Number"
-                  placeholder="+60 12-345 6789"
+                  placeholder="+249 12-345 6789"
                   type="tel"
                   value={formData.phone}
                   onChange={(value: string) => handleInputChange("phone", value)}
@@ -235,7 +251,7 @@ function Registration() {
                     />
                     <TextField
                       label="Phone Number"
-                      placeholder="+60 12-345 6789"
+                      placeholder="+249 12-345 6789"
                       type="tel"
                       value={member.phone}
                       onChange={(value: string) => handleMemberChange(index, "phone", value)}
@@ -288,8 +304,8 @@ function Registration() {
                 </p>
               )}
               <CustomButton
-                name={isSubmitting ? "Submitting..." : "Submit Registration"}
-                onclick={handleSubmit}
+                name={isSubmitting ? "Submitting..." : "Submit"}
+                onclick={handleSubmit} 
               />
             </div>
           </div>
