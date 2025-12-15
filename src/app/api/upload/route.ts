@@ -11,20 +11,20 @@ export async function POST(request: Request) {
 
   // UPDATED AUTH SECTION
   const oauth2Client = new google.auth.OAuth2(
-    process.env.NEXT_PUBLIC_CLIENT_ID,
-    process.env.NEXT_PUBLIC_CLIENT_SECRET,
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET,
     'https://developers.google.com/oauthplayground'
   );
 
   oauth2Client.setCredentials({
-    refresh_token: process.env.NEXT_PUBLIC_REFRESH_TOKEN
+    refresh_token: process.env.REFRESH_TOKEN
   });
 
   const drive = google.drive({ version: 'v3', auth: oauth2Client });
 
   const fileMetadata = {
     name: file.name,
-    parents: [process.env.NEXT_PUBLIC_FOLDER_PATH || ''], // Your folder ID
+    parents: [process.env.FOLDER_PATH || ''], // Your folder ID
   };
 
   try {
