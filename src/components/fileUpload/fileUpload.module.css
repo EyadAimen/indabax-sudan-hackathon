@@ -1,0 +1,119 @@
+/* components/FileUpload.module.css */
+
+.fileUploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--white-color);
+  margin-bottom: 0.25rem;
+}
+
+.required {
+  color: var(--primary-color);
+  margin-left: 0.25rem;
+}
+
+.uploadSection {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.fileInputWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileInputLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: var(--card-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fileInputLabel:hover {
+  background-color: #252525;
+  border-color: rgba(239, 114, 5, 0.3);
+}
+
+.uploadIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.fileInputText {
+  font-size: 1rem;
+  color: var(--light-text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buttonWrapper {
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  font-size: 0.875rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+}
+
+.successMessage {
+  font-size: 0.875rem;
+  color: #4ade80;
+  margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .uploadSection {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .buttonWrapper {
+    width: 100%;
+  }
+
+  .fileInputLabel {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .fileInputText {
+    font-size: 0.95rem;
+  }
+
+  .uploadIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .label {
+    font-size: 0.9rem;
+  }
+
+  .errorMessage,
+  .successMessage {
+    font-size: 0.8rem;
+  }
+}

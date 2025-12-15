@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "poetic-logic-481308-n5",
+  "private_key_id": "0d7359830795c8687ab9b56f18a43807582c581e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLtOAyeWh9d97z\npVUqHTRaTLQXa2RiHRCyDDMB4OJGCaG9BqgxSZqCVjiHUjqBc1l7iWsxScNag/rb\ny6p3mpLxZczIZYJ3/LObMdtzs0Mtwj8O/SqURgjR+/csKyAie3v29FLbWFP2qG6K\nRdq7nY3j97xldp5NeAycPnELJAi3ZUcF1wXtB4MaWnVjAbHR+ux0PnSOBxWHcm4D\nWkD/8Jxv0d+hLCvDbFWx0i2Lm5fgEhH8hM2gUhGIFDZouxnIXXwTQlDVFgF7U5em\nf9BWeRmWbjyKwckKuFTQ4CLAAILc9Un38Fy5Vl6K+Q+KE2jYwDXo1kxCVEMrNfk7\nFvSBANjnAgMBAAECggEAX7rgU4gPrUr8eRa9B54S4M7EIW9kDOGo22t1OxBCdfSH\n0CvFNehnlpHLXfisKvKY3j/toouOJUb5yHoVYcDABna3PoPJxPZ6N1g+T8iyLNpo\nxPP/ow+ojHnzJgwcPWg3kQ4vtAn152gvDocWbG315Oii3jHY4gIlNvX3LOuhtwEo\nBDuMFx1jrUQdW2lAMXkvdtiBjFCn+lWErYcsfzmSNBSOxh+d/bX4Sa6FJqyuOvOt\nEchjc6k0RZcrztOwxkjNzIlk6U0MOaqxthWcOgHQI2IDnj4s114dgpZBWvYj6vlD\nHuMAZfRvz9tdBPvUG6J5aGDJyDaRU0LWkytRc8knyQKBgQDuMqRQVx1cduxLXVgQ\nsp7C1I4HUEeU8bu9aeDN2ftj8YMkHRJajOruYk4O/AF2vjp2MvNgvIWYWSXbuyC7\nXE1cxS9nqcvoQU6drkkLq6XExKBgJ/oRp9yg7mKXTUr28exgea32pq4Fadi29yko\n0+/+jW/+1vaemGASIkMEbY2SfwKBgQDa7lL2MsSnFGj30z6l0STrwsIVHi1RuKhf\nRgsCzpjj+pq7LYkT6zxTb2UCM98Hdp43r2f2cj3kdw46T5StqVjubmKx402LLwPQ\nUtzqg/MUAi70VcPfDiZom9Xdhzgji94/3fjb+NMy7cGTofC+xj090AZkWjo9yJN3\nLLHWH/A1mQKBgAPyduKV7vifR98f1tu/+f2EhC3+2JDRSKkk3gLLP+0yDVhF2w4B\nE8uLeXuqFWQgVtuqkHnj5drWb1gqy6oPJ4EIC3cOS0C4BFN8ld1JpN+T2ox9XRl5\nzKAmEyAqublJ3P7kRUu3C18vl9XAVsBEcs+nDFoOudt67uyeALpMDnKFAoGAFi5v\nWWJrakI3IGTWxBYcl4Z0A4+7J7x90qlWFEK6Wt7ZLn2+lbYPtqRip4Z54leyUBIF\nhoKsoqktV9sYRUATMpUcisls4d0xlbnPiDM2PaC7ASZvYfodChw/3uIEXhWdvvrO\na/sZ6t8L7dlKewm6yrh47VH29KuNxVVR70/tFoECgYA9cJdHdhKENzc9lKkqTu5q\ngrD8o0Ijt2YNjWZ2c3/sxqiMe/7GCH8h4AhEzk/LVqeaWYWrcBVYfr1jMCuh1nkY\noQRSn040kRQNOdt949xAUuP4KGgo1r6ygKZMsrFqKI+J6nom4ST9L5MCfaBvwF+R\nl8sb51DUGv7Z0z5/wapLLQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "test-docs@poetic-logic-481308-n5.iam.gserviceaccount.com",
+  "client_id": "110986950469704402595",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test-docs%40poetic-logic-481308-n5.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

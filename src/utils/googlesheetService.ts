@@ -1,13 +1,12 @@
 // utils/googleSheetsService.ts
 
-interface RegistrationData {
+export interface RegistrationData {
   name: string;
   email: string;
   phone: string;
   members: string;
-  description: string;
-  businessModel: string;
-  poc: string;
+  projectTitle: string;
+  projectDocument: string;
   timestamp: string;
 }
 

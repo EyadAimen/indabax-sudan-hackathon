@@ -1,302 +1,188 @@
 "use client";
-import { useState } from "react";
 import Header from "@/components/header/header";
-import CustomButton from "@/components/button/button";
-import TextField from "@/components/textField/textField";
-import { submitToGoogleSheets } from "../../utils/googlesheetService";
 import styles from "./page.module.css";
+import Card from "@/components/card/card";
+import { useRouter } from "next/navigation";
+import PeopleCard from "@/components/peopleCard/peopleCard";
+import TimelineCard from "@/components/timelineCard/timelineCard";
+import { RxCheck, RxCheckCircled, RxFileText, RxInfoCircled, RxListBullet, RxPerson, RxStar } from "react-icons/rx";
+import CustomButton from "@/components/button/button";
 
-interface Member {
-  name: string;
-  email: string;
-  phone: string;
-}
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  members: Member[];
-  description: string;
-  businessModel: string;
-  poc: string;
-}
 
-interface Errors {
-  [key: string]: string;
-}
+export default function Home() {
+  const router = useRouter();
+  
+  const peopleNames = ["Alice Johnson", "Bob Smith", "Charlie Davis"];
+  const peopleBio = [
+    "Alice is a seasoned AI researcher with a passion for developing innovative machine learning models.",
+    "Bob is a software engineer specializing in full-stack development and cloud computing.",
+    "Charlie is a data scientist focused on extracting insights from large datasets to drive business decisions."
+  ];
+  const peopleImages = [
+    "/images/people/alice.jpg",
+    "/images/people/bob.jpg",
+    "/images/people/charlie.jpg"
+  ];
 
-function Registration() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    phone: "",
-    members: [
-      { name: "", email: "", phone: "" },
-      { name: "", email: "", phone: "" },
-      { name: "", email: "", phone: "" },
-      { name: "", email: "", phone: "" }
-    ],
-    description: "",
-    businessModel: "",
-    poc: ""
-  });
+  const presentersNames = ["Diana Prince", "Ethan Hunt"];
+  const presentersBio = [
+    "Diana is an expert in UX/UI design with a knack for creating user-friendly digital experiences.",
+    "Ethan is a cybersecurity specialist dedicated to protecting systems from cyber threats."
+  ];
+  const presentersImages = [
+    "/images/people/diana.jpg",
+    "/images/people/ethan.jpg"
+  ];
 
-  const [errors, setErrors] = useState<Errors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
-
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^[\d\s\-+()]{10,}$/;
-    return phoneRegex.test(phone);
-  };
-
-  const handleInputChange = (field: keyof FormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: "" }));
-    }
-  };
-
-  const handleMemberChange = (index: number, field: keyof Member, value: string) => {
-    const newMembers = [...formData.members];
-    newMembers[index][field] = value;
-    setFormData(prev => ({ ...prev, members: newMembers }));
-    
-    const errorKey = `member${index}_${field}`;
-    if (errors[errorKey]) {
-      setErrors(prev => ({ ...prev, [errorKey]: "" }));
-    }
-  };
-
-  const validateForm = (): boolean => {
-    const newErrors: Errors = {};
-
-    // Validate main user fields
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
-    }
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
-    }
-
-    // Validate member fields (only if any field is filled)
-    formData.members.forEach((member, index) => {
-      const hasAnyField = member.name || member.email || member.phone;
-      
-      if (hasAnyField) {
-        if (member.email && !validateEmail(member.email)) {
-          newErrors[`member${index}_email`] = "Please enter a valid email address";
-        }
-        if (member.phone && !validatePhone(member.phone)) {
-          newErrors[`member${index}_phone`] = "Please enter a valid phone number";
-        }
-      }
-    });
-
-    // Validate submission content
-    if (!formData.description.trim()) {
-      newErrors.description = "Idea description is required";
-    }
-    if (!formData.businessModel.trim()) {
-      newErrors.businessModel = "Business model is required";
-    }
-    if (!formData.poc.trim()) {
-      newErrors.poc = "Proof of Concept is required";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async () => {
-    if (!validateForm()) {
-      setSubmitMessage("Please fix the errors before submitting");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitMessage("");
-
-    try {
-      // Format members data as comma-separated strings
-      const membersData = formData.members
-        .filter(m => m.name || m.email || m.phone)
-        .map(m => `${m.name}|${m.email}|${m.phone}`)
-        .join(",");
-
-      const dataToSubmit = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        members: membersData,
-        description: formData.description,
-        businessModel: formData.businessModel,
-        poc: formData.poc,
-        timestamp: new Date().toISOString()
-      };
-
-      // TODO: Replace with your actual Google Sheets API endpoint
-      const response = await submitToGoogleSheets(dataToSubmit);
-      
-      if (!response)
-        setSubmitMessage("Failed to submit registration. Please try again.");
-      
-    } catch (error) {
-      console.error("Submission error:", error);
-      setSubmitMessage("An error occurred. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
+  const timeLines = [
+    {date: "18 DEC", description: "Registration Opens", addInfo: ""},
+    {date: "20 DEC", description: "Registration Closes", addInfo: "Confirmation emails sent (Platform link + password)"},
+    // {date: "20 - 23 DEC", description: "Final Submission", addInfo: "Teams submit their final projects for evaluation."},
+    {date: "21 DEC", description: "Sessions", addInfo: ""},
+    {date: "23 DEC", description: "Final submissions due", addInfo: ""},
+    {date: "23 DEC", description: "Pitch Deck", addInfo: ""},
+    {date: "23 DEC", description: "Evaluation of Submissions", addInfo: ""},
+    {date: "23 DEC", description: "Announcement and Winnders", addInfo: ""}
+  ];
+  
   return (
     <div>
-      <Header />
+      
+      {/* Header of the web */}
+      <Header activeID={1}/>
       <main className={styles.page}>
-        <div className={styles.container}>
-          <h1 className={styles.title}>Ideathon Registration</h1>
-          <p className={styles.subtitle}>
-            Join us for an exciting ideathon event. Register your team below.
-          </p>
+        <h1>Track 1: <span className={styles.titleOrdange}>IDEATHON</span></h1>
+        <p className={styles.pMargin}>AI and ML - create intelligent solutions leveraging artificial intelligence and data science</p>
+        <hr className={styles.line}/>
 
-          <div className={styles.form}>
-            {/* Main User Section */}
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Team Leader Information</h2>
-              <div className={styles.fieldGroup}>
-                <TextField
-                  label="Full Name"
-                  placeholder="Enter your full name"
-                  type="text"
-                  value={formData.name}
-                  onChange={(value: string) => handleInputChange("name", value)}
-                  error={errors.name}
-                  required
-                />
-                <TextField
-                  label="Email Address"
-                  placeholder="your.email@example.com"
-                  type="email"
-                  value={formData.email}
-                  onChange={(value: string) => handleInputChange("email", value)}
-                  error={errors.email}
-                  required
-                />
-                <TextField
-                  label="Phone Number"
-                  placeholder="+60 12-345 6789"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(value: string) => handleInputChange("phone", value)}
-                  error={errors.phone}
-                  required
-                />
+        <div className={styles.contentContainer}>
+          {/* left hand side content */}
+          <div>
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxInfoCircled color="#121212" size={20} /></div>
+                <h2>About Track</h2>
               </div>
-            </section>
-
-            {/* Team Members Section */}
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Team Members (Optional)</h2>
-              <p className={styles.sectionDescription}>
-                Add up to 4 additional team members
-              </p>
-              {formData.members.map((member, index) => (
-                <div key={index} className={styles.memberGroup}>
-                  <h3 className={styles.memberTitle}>Member {index + 1}</h3>
-                  <div className={styles.fieldGroup}>
-                    <TextField
-                      label="Full Name"
-                      placeholder="Enter member's full name"
-                      type="text"
-                      value={member.name}
-                      onChange={(value: string) => handleMemberChange(index, "name", value)}
-                      error={errors[`member${index}_name`]}
-                    />
-                    <TextField
-                      label="Email Address"
-                      placeholder="member.email@example.com"
-                      type="email"
-                      value={member.email}
-                      onChange={(value: string) => handleMemberChange(index, "email", value)}
-                      error={errors[`member${index}_email`]}
-                    />
-                    <TextField
-                      label="Phone Number"
-                      placeholder="+60 12-345 6789"
-                      type="tel"
-                      value={member.phone}
-                      onChange={(value: string) => handleMemberChange(index, "phone", value)}
-                      error={errors[`member${index}_phone`]}
-                    />
-                  </div>
-                </div>
-              ))}
-            </section>
-
-            {/* Submission Content Section */}
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Your Submission</h2>
-              <div className={styles.fieldGroup}>
-                <TextField
-                  label="Idea Description"
-                  placeholder="Describe your innovative idea in detail..."
-                  type="textarea"
-                  value={formData.description}
-                  onChange={(value: string) => handleInputChange("description", value)}
-                  error={errors.description}
-                  required
-                />
-                <TextField
-                  label="Business Model"
-                  placeholder="Explain your business model and monetization strategy..."
-                  type="textarea"
-                  value={formData.businessModel}
-                  onChange={(value: string) => handleInputChange("businessModel", value)}
-                  error={errors.businessModel}
-                  required
-                />
-                <TextField
-                  label="Proof of Concept (POC)"
-                  placeholder="Describe your proof of concept, prototype, or implementation plan..."
-                  type="textarea"
-                  value={formData.poc}
-                  onChange={(value: string) => handleInputChange("poc", value)}
-                  error={errors.poc}
-                  required
-                />
-              </div>
-            </section>
-
-            {/* Submit Button */}
-            <div className={styles.submitSection}>
-              {submitMessage && (
-                <p className={`${styles.submitMessage} ${submitMessage.includes("success") ? styles.success : styles.error}`}>
-                  {submitMessage}
-                </p>
-              )}
-              <CustomButton
-                name={isSubmitting ? "Submitting..." : "Submit Registration"}
-                onclick={handleSubmit}
-              />
+              <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
-          </div>
+
+            <hr className={styles.line}/>
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxListBullet color="#121212" size={20} /></div>
+                <h2>Instructions</h2>
+              </div>
+              <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+
+            <hr className={styles.line}/>
+
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxCheck color="#121212" size={20} /></div>
+                <h2>Participation Requirements</h2>
+              </div>
+              <p className={styles.pMargin}>
+                <ol className={styles.list}>
+                  <li>Address a validated, specific problem within the Sudanese context.</li>
+                  <li>Include a feasible AI/ML component that strengthens the value or functionality of the solution.</li>
+                  <li>Demonstrate novelty, meaningful impact, and practical relevance.</li>
+                  <li>Provide a Proof of Concept (POC) — either a very simple prototype or a structured implementation plan showing feasibility.</li>
+                  <li>Present a sustainability model, including potential revenue streams and how resources or future investments will be used.</li>
+                </ol>
+               </p>
+            </div>
+
+            <hr className={styles.line}/>
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxStar color="#121212" size={20} /></div>
+                <h2>Why You Should Join</h2>
+              </div>
+              <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <hr className={styles.line}/>
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxFileText color="#121212" size={20} /></div>
+                <h2>Full Proposal Requirements</h2>
+              </div>
+              <p className={styles.pMargin}>
+                <ol className={styles.list}>
+                  <li><b>Problem Statement & Market Need:</b> Clear definition of the problem, its significance and affected groups.</li>
+                  <li><b>Target Users & Use Cases:</b> Primary beneficiaries and core use cases demonstrating how the solution will be used.</li>
+                  <li><b>Proposed Solution:</b> Full explanation of the solution, value proposition and why it is unique or superior to alternatives.</li>
+                  <li><b>AI/ML Component (Technical Feasibility):</b> Role of AI/ML in the solution, intended models or algorithms, data requirements and sourcing and anticipated technical challenges.</li>
+                  <li><b>Proof of Concept (POC):</b> Participants must demonstrate feasibility through:
+                          <ul className={styles.list}>
+                            <li>A simple prototype (screenshots, basic workflow, mock-up), or</li>
+                            <li>A structured implementation plan with milestones and expected deliverables</li>
+                          </ul>
+                        
+                  </li>
+                  <li><b>Business Model & Sustainability:</b> Revenue model, cost estimates, sustainability approach and how future investments will be used.</li>
+                  <li><b>Scalability & Impact:</b> Potential to scale, expected social, economic, or environmental benefits.</li>
+
+                </ol>
+              </p>
+            </div>
+
+            <hr className={styles.line}/>
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxPerson color="#121212" size={20} /></div>
+                <h2>Team Structure</h2>
+              </div>
+              <p className={styles.pMargin}>
+                  <ul className={styles.list}>
+                  <li>Participants may compete individually or in teams</li>
+                  <li>Each team may include up to four (4) members maximum</li>
+                  <li>Teams are encouraged to form multidisciplinary groups combining data science, business, engineering, and domain knowledge</li>
+                  <li>Every team must designate a team leader responsible for communication and submissions on the platform</li>
+                </ul>
+              </p>
+            </div>
+            <hr className={styles.line}/>
+            {/* end of left hand side content */}
+            </div>
+            {/* right hand side content */}
+            <div className={styles.cardSection}>
+              {/* timeline card */}
+              <div className={styles.cardMargin}>
+                <TimelineCard timeline={timeLines} />
+              </div>
+              {/* judges card */}
+              <div className={styles.cardMargin}>
+                <PeopleCard
+                  title="Meet The Judges"
+                  peopleNames={peopleNames}
+                  peopleBio={peopleBio}
+                  peopleImages={peopleImages}
+                />
+              </div>
+              {/* presenters card */}
+              <div className={styles.cardMargin}>
+                <PeopleCard 
+                  title="Meet The Presenters"
+                  peopleNames={presentersNames}
+                  peopleBio={presentersBio}
+                  peopleImages={presentersImages}
+                />
+              </div>
+            </div>
+        
+        </div>
+        <div className={styles.buttonContainer}>
+          <CustomButton 
+            name="Register Now"
+            onclick={() => router.push('/ideathon/registration')}
+          />
         </div>
       </main>
+      
     </div>
   );
 }
-
-export default Registration;

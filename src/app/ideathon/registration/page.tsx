@@ -5,6 +5,8 @@ import CustomButton from "@/components/button/button";
 import TextField from "@/components/textField/textField";
 import styles from "./page.module.css";
 import { submitToGoogleSheets } from "@/utils/googlesheetService";
+import FileUpload from "@/components/fileUpload/fileUpload";
+import { useRouter } from "next/navigation";
 
 interface Member {
   name: string;
@@ -17,9 +19,8 @@ interface FormData {
   email: string;
   phone: string;
   members: Member[];
-  description: string;
-  businessModel: string;
-  poc: string;
+  projectTitle: string;
+  projectDocument: string;
 }
 
 interface Errors {
@@ -37,14 +38,14 @@ function Registration() {
       { name: "", email: "", phone: "" },
       { name: "", email: "", phone: "" }
     ],
-    description: "",
-    businessModel: "",
-    poc: ""
+    projectTitle: "",
+    projectDocument: ""
   });
 
   const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const router = useRouter();
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -74,6 +75,11 @@ function Registration() {
     }
   };
 
+  // Callback function for the FileUpload component
+  const handleFileUploaded = (fileLink: string) => {
+    handleInputChange("projectDocument", fileLink);
+  };
+
   const validateForm = (): boolean => {
     const newErrors: Errors = {};
 
@@ -91,6 +97,12 @@ function Registration() {
     } else if (!validatePhone(formData.phone)) {
       newErrors.phone = "Please enter a valid phone number";
     }
+    if (!formData.projectTitle.trim()) {
+      newErrors.projectTitle = "Project title is required";
+    }
+    if (!formData.projectDocument.trim()) {
+      newErrors.projectDocument = "Project document is required";
+    }
 
     // Validate member fields (only if any field is filled)
     formData.members.forEach((member, index) => {
@@ -106,16 +118,7 @@ function Registration() {
       }
     });
 
-    // Validate submission content
-    if (!formData.description.trim()) {
-      newErrors.description = "Idea description is required";
-    }
-    if (!formData.businessModel.trim()) {
-      newErrors.businessModel = "Business model is required";
-    }
-    if (!formData.poc.trim()) {
-      newErrors.poc = "Proof of Concept is required";
-    }
+    
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -142,9 +145,8 @@ function Registration() {
         email: formData.email,
         phone: formData.phone,
         members: membersData,
-        description: formData.description,
-        businessModel: formData.businessModel,
-        poc: formData.poc,
+        projectTitle: formData.projectTitle,
+        projectDocument: formData.projectDocument,
         timestamp: new Date().toISOString()
       };
 
@@ -163,9 +165,8 @@ function Registration() {
             { name: "", email: "", phone: "" },
             { name: "", email: "", phone: "" }
           ],
-          description: "",
-          businessModel: "",
-          poc: ""
+          projectTitle: "",
+          projectDocument: ""
         });
         setErrors({});
       }
@@ -178,9 +179,25 @@ function Registration() {
     }
   };
 
-  return (
-    <div>
-      <Header />
+
+
+
+
+
+return (
+  <div>
+    <Header />
+
+    {submitMessage && submitMessage.includes("success") ? (
+      <main className={styles.page}>
+        <div className={styles.successContainer}>
+          <p className={`${styles.submitMessage} ${styles.success}`}>
+            {submitMessage}
+          </p>
+          <CustomButton name="Redirect to home page" onclick={() => router.replace("/")} />
+        </div>
+      </main>
+    ) : (
       <main className={styles.page}>
         <div className={styles.container}>
           <h1 className={styles.title}>Ideathon Registration</h1>
@@ -238,7 +255,9 @@ function Registration() {
                       placeholder="Enter member's full name"
                       type="text"
                       value={member.name}
-                      onChange={(value: string) => handleMemberChange(index, "name", value)}
+                      onChange={(value: string) =>
+                        handleMemberChange(index, "name", value)
+                      }
                       error={errors[`member${index}_name`]}
                     />
                     <TextField
@@ -246,7 +265,9 @@ function Registration() {
                       placeholder="member.email@example.com"
                       type="email"
                       value={member.email}
-                      onChange={(value: string) => handleMemberChange(index, "email", value)}
+                      onChange={(value: string) =>
+                        handleMemberChange(index, "email", value)
+                      }
                       error={errors[`member${index}_email`]}
                     />
                     <TextField
@@ -254,7 +275,9 @@ function Registration() {
                       placeholder="+249 12-345 6789"
                       type="tel"
                       value={member.phone}
-                      onChange={(value: string) => handleMemberChange(index, "phone", value)}
+                      onChange={(value: string) =>
+                        handleMemberChange(index, "phone", value)
+                      }
                       error={errors[`member${index}_phone`]}
                     />
                   </div>
@@ -265,33 +288,27 @@ function Registration() {
             {/* Submission Content Section */}
             <section className={styles.section}>
               <h2 className={styles.sectionTitle}>Your Submission</h2>
+              <p className={styles.sectionDescription}>
+                Upload a PDF file describing your project idea, business model,Proof of concept (POC). Also attach your video presentation link in the PDF.
+              </p>
               <div className={styles.fieldGroup}>
                 <TextField
-                  label="Idea Description"
-                  placeholder="Describe your innovative idea in detail..."
-                  type="textarea"
-                  value={formData.description}
-                  onChange={(value: string) => handleInputChange("description", value)}
-                  error={errors.description}
+                  label="Project Title"
+                  placeholder="Enter your project title."
+                  type="text"
+                  value={formData.projectTitle}
+                  onChange={(value: string) =>
+                    handleInputChange("projectTitle", value)
+                  }
+                  error={errors.projectTitle}
                   required
                 />
-                <TextField
-                  label="Business Model"
-                  placeholder="Explain your business model and monetization strategy..."
-                  type="textarea"
-                  value={formData.businessModel}
-                  onChange={(value: string) => handleInputChange("businessModel", value)}
-                  error={errors.businessModel}
-                  required
-                />
-                <TextField
-                  label="Proof of Concept (POC)"
-                  placeholder="Describe your proof of concept, prototype, or implementation plan..."
-                  type="textarea"
-                  value={formData.poc}
-                  onChange={(value: string) => handleInputChange("poc", value)}
-                  error={errors.poc}
-                  required
+                <FileUpload
+                  label="Upload Project Document"
+                  required={true}
+                  accept="application/pdf"
+                  onFileUploaded={handleFileUploaded}
+                  error={errors.projectDocument}
                 />
               </div>
             </section>
@@ -299,20 +316,28 @@ function Registration() {
             {/* Submit Button */}
             <div className={styles.submitSection}>
               {submitMessage && (
-                <p className={`${styles.submitMessage} ${submitMessage.includes("success") ? styles.success : styles.error}`}>
+                <p
+                  className={`${styles.submitMessage} ${
+                    submitMessage.includes("success")
+                      ? styles.success
+                      : styles.error
+                  }`}
+                >
                   {submitMessage}
                 </p>
               )}
               <CustomButton
                 name={isSubmitting ? "Submitting..." : "Submit"}
-                onclick={handleSubmit} 
+                disabled={isSubmitting}
+                onclick={handleSubmit}
               />
             </div>
           </div>
         </div>
       </main>
-    </div>
-  );
-}
+    )}
+  </div>
+);
+} 
 
 export default Registration;
