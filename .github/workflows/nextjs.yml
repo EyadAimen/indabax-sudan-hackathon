@@ -28,6 +28,15 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+
+    env:
+      NEXT_PUBLIC_API_URI: ${{ secrets.NEXT_PUBLIC_GOOGLE_SCRIPT_URL }}
+      NEXT_PUBLIC_CLIENT_EMAIL: ${{ secrets.NEXT_PUBLIC_CLIENT_EMAIL }}
+      NEXT_PUBLIC_PRIVATE_KEY: ${{ secrets.NEXT_PUBLIC_PRIVATE_KEY }}
+      NEXT_PUBLIC_FOLDER_PATH: ${{ secrets.FOLDER_PATH }}
+      NEXT_PUBLIC_REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
+      NEXT_PUBLIC_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      NEXT_PUBLIC_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
