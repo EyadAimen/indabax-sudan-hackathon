@@ -128,6 +128,14 @@ export default function Home() {
 
                 </ol>
               </p>
+              <p className={styles.pMargin}>You must Register for the hackathon first, and after receiving the confirmation email you may submit the full proposal here:</p>
+              <div className={styles.buttonContainer} style={{marginTop: "1rem"}}>
+                <CustomButton 
+                  name="Submit full proposal"
+                  onclick={() => router.push('/ideathon/registration')}
+                />
+            </div>
+
             </div>
 
             <hr className={styles.line}/>
@@ -178,9 +186,10 @@ export default function Home() {
         <div className={styles.buttonContainer}>
           <CustomButton 
             name="Register Now"
-            onclick={() => router.push('/ideathon/registration')}
+            onclick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScHTq2Cj5XMJB1BF9Lyyyr2eSXcX6we6pHjPIrSZxjWqY4piA/viewform', '_blank')}
           />
         </div>
+        
       </main>
       
     </div>
