@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // output: "export",
   basePath: "/indabax-sudan-hackathon",
   images: {
     unoptimized: true,
