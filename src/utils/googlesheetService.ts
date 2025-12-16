@@ -13,7 +13,7 @@ export interface RegistrationData {
 export async function submitToGoogleSheets(data: RegistrationData): Promise<{ success: boolean; message: string }> {
   try {
     // Next.js automatically loads NEXT_PUBLIC_ variables from .env.local
-    const GOOGLE_SCRIPT_URL = process.env.GOOGLE_SCRIPT_URL;
+    const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
 
     if (!GOOGLE_SCRIPT_URL) {
       console.error('Google Script URL not configured');

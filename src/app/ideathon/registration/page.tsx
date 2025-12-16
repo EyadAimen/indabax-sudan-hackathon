@@ -45,7 +45,18 @@ function Registration() {
   const [errors, setErrors] = useState<Errors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [viewForm, setViewForm] = useState(false);
   const router = useRouter();
+  const handlePasswordSubmit = () => {
+    const correctPassword = "Test1234";
+    if (password === correctPassword) {
+      setViewForm(true);
+    } else {
+      setPasswordError("Incorrect password. Please try again.");
+    }
+  }
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -187,103 +198,117 @@ function Registration() {
 return (
   <div>
     <Header />
-
-    {submitMessage && submitMessage.includes("success") ? (
+    {!viewForm ? (
       <main className={styles.page}>
         <div className={styles.successContainer}>
-          <p className={`${styles.submitMessage} ${styles.success}`}>
-            {submitMessage}
-          </p>
-          <CustomButton name="Redirect to home page" onclick={() => router.replace("/")} />
+          <TextField 
+            label="Password"
+            type="password"
+            onChange={(value: string) => setPassword(value)}
+            error={passwordError}
+          />
+          <CustomButton name="Submit" onclick={handlePasswordSubmit} />
         </div>
       </main>
     ) : (
       <main className={styles.page}>
-        <div className={styles.container}>
-          <h1 className={styles.title}>Ideathon Registration</h1>
-          <p className={styles.subtitle}>
-            Join us for an exciting ideathon event. Register your team below.
-          </p>
-
-          <div className={styles.form}>
-            {/* Main User Section */}
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Team Leader Information</h2>
-              <div className={styles.fieldGroup}>
-                <TextField
-                  label="Full Name"
-                  placeholder="Enter your full name"
-                  type="text"
-                  value={formData.name}
-                  onChange={(value: string) => handleInputChange("name", value)}
-                  error={errors.name}
-                  required
-                />
-                <TextField
-                  label="Email Address"
-                  placeholder="your.email@example.com"
-                  type="email"
-                  value={formData.email}
-                  onChange={(value: string) => handleInputChange("email", value)}
-                  error={errors.email}
-                  required
-                />
-                <TextField
-                  label="Phone Number"
-                  placeholder="+249 12-345 6789"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(value: string) => handleInputChange("phone", value)}
-                  error={errors.phone}
-                  required
-                />
-              </div>
-            </section>
-
-            {/* Team Members Section */}
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Team Members (Optional)</h2>
-              <p className={styles.sectionDescription}>
-                Add up to 4 additional team members
+      
+        {submitMessage && submitMessage.includes("success") ? (
+          
+            <div className={styles.successContainer}>
+              <p className={`${styles.submitMessage} ${styles.success}`}>
+                {submitMessage}
               </p>
-              {formData.members.map((member, index) => (
-                <div key={index} className={styles.memberGroup}>
-                  <h3 className={styles.memberTitle}>Member {index + 1}</h3>
+              <CustomButton name="Redirect to home page" onclick={() => router.replace("/")} />
+            </div>
+          
+        ) : (
+         
+            <div className={styles.container}>
+              <h1 className={styles.title}>Ideathon Registration</h1>
+              <p className={styles.subtitle}>
+                Join us for an exciting ideathon event. Register your team below.
+              </p>
+    
+              <div className={styles.form}>
+                {/* Main User Section */}
+                <section className={styles.section}>
+                  <h2 className={styles.sectionTitle}>Team Leader Information</h2>
                   <div className={styles.fieldGroup}>
                     <TextField
                       label="Full Name"
-                      placeholder="Enter member's full name"
+                      placeholder="Enter your full name"
                       type="text"
-                      value={member.name}
-                      onChange={(value: string) =>
-                        handleMemberChange(index, "name", value)
-                      }
-                      error={errors[`member${index}_name`]}
+                      value={formData.name}
+                      onChange={(value: string) => handleInputChange("name", value)}
+                      error={errors.name}
+                      required
                     />
                     <TextField
                       label="Email Address"
-                      placeholder="member.email@example.com"
+                      placeholder="your.email@example.com"
                       type="email"
-                      value={member.email}
-                      onChange={(value: string) =>
-                        handleMemberChange(index, "email", value)
-                      }
-                      error={errors[`member${index}_email`]}
+                      value={formData.email}
+                      onChange={(value: string) => handleInputChange("email", value)}
+                      error={errors.email}
+                      required
                     />
                     <TextField
                       label="Phone Number"
                       placeholder="+249 12-345 6789"
                       type="tel"
-                      value={member.phone}
-                      onChange={(value: string) =>
-                        handleMemberChange(index, "phone", value)
-                      }
-                      error={errors[`member${index}_phone`]}
+                      value={formData.phone}
+                      onChange={(value: string) => handleInputChange("phone", value)}
+                      error={errors.phone}
+                      required
                     />
                   </div>
-                </div>
-              ))}
-            </section>
+                </section>
+    
+                {/* Team Members Section */}
+                {/* <section className={styles.section}>
+                  <h2 className={styles.sectionTitle}>Team Members (Optional)</h2>
+                  <p className={styles.sectionDescription}>
+                    Add up to 4 additional team members
+                  </p>
+                  {formData.members.map((member, index) => (
+                    <div key={index} className={styles.memberGroup}>
+                      <h3 className={styles.memberTitle}>Member {index + 1}</h3>
+                      <div className={styles.fieldGroup}>
+                        <TextField
+                          label="Full Name"
+                          placeholder="Enter member's full name"
+                          type="text"
+                          value={member.name}
+                          onChange={(value: string) =>
+                            handleMemberChange(index, "name", value)
+                          }
+                          error={errors[`member${index}_name`]}
+                        />
+                        <TextField
+                          label="Email Address"
+                          placeholder="member.email@example.com"
+                          type="email"
+                          value={member.email}
+                          onChange={(value: string) =>
+                            handleMemberChange(index, "email", value)
+                          }
+                          error={errors[`member${index}_email`]}
+                        />
+                        <TextField
+                          label="Phone Number"
+                          placeholder="+249 12-345 6789"
+                          type="tel"
+                          value={member.phone}
+                          onChange={(value: string) =>
+                            handleMemberChange(index, "phone", value)
+                          }
+                          error={errors[`member${index}_phone`]}
+                        />
+                      </div>
+                    </div>
+                  ))}
+            </section> */}
 
             {/* Submission Content Section */}
             <section className={styles.section}>
@@ -334,7 +359,9 @@ return (
             </div>
           </div>
         </div>
-      </main>
+
+    )}
+      </main>  
     )}
   </div>
 );
