@@ -29,7 +29,7 @@ export default function Home() {
                 onTap={()=>handleCardClick("ideathon")}
                 icon={RxLightningBolt}
           />
-          <Card title="Problem Solving" description="Show case your problem-solving skills and innovative ideas to tackle issues in Sudan." 
+          <Card title="Problem Solving" description=" Climate Challenge, Predicting dry spells in Algadarif (July–October)." 
                 onTap={()=>handleCardClick("problem-solving")}
                 icon={RxMagnifyingGlass}
                 />

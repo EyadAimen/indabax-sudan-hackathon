@@ -124,6 +124,22 @@ function SharedTask() {
             </div>
             <hr className={styles.line}/>
 
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxPerson color="#121212" size={20} /></div>
+                <h2>Team Structure</h2>
+              </div>
+              <p className={styles.pMargin}>
+                  <ul className={styles.list}>
+                  <li>Participants may compete individually or in teams</li>
+                  <li>Each team may include up to four (4) members maximum</li>
+                  <li>Teams are encouraged to form multidisciplinary groups combining data science, business, engineering, and domain knowledge</li>
+                  <li>Every team must designate a team leader responsible for communication and submissions on the platform</li>
+                </ul>
+              </p>
+            </div>
+            <hr className={styles.line}/>
+
             
             {/* Competition Timeline  */}
             <div>
