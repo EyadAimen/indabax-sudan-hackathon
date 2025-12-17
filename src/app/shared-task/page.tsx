@@ -200,7 +200,7 @@ function SharedTask() {
             <hr className={styles.line}/>
 
 
-              {/* Evaluatio Criteria section */}
+              {/* Prizes section */}
             <div>
               <div className={styles.subtitle}>
                 <div className={styles.circle}><FaTrophy color="#121212" size={20} /></div>
@@ -211,8 +211,8 @@ function SharedTask() {
                   <li>Certificates</li>
                   <li>Recognition in the final technical report </li>
                   <li>Co-author the dataset paper (Based on contribution) </li>
-                  <li>First Place Award: $300.</li>
-                  <li>Best System Award: $ 100, awarded to the team that delivers a robust and well-documented end-to-end system covering the full pipeline—from data collection and annotation to captioning, question answering, packaging, comprehensive documentation, and an accompanying paper.</li>
+                  <li>First Place Award: Prizes valued upto $300.</li>
+                  <li>Best System Award: Prizes valued upto $100, awarded to the team that delivers a robust and well-documented end-to-end system covering the full pipeline—from data collection and annotation to captioning, question answering, packaging, comprehensive documentation, and an accompanying paper.</li>
                   
                 </ul> 
               </p>
@@ -311,7 +311,7 @@ function SharedTask() {
         <div className={styles.buttonContainer}>
           <CustomButton 
             name="Register Now"
-            onclick={() => window.open('/', '_blank')}
+            onclick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScHTq2Cj5XMJB1BF9Lyyyr2eSXcX6we6pHjPIrSZxjWqY4piA/viewform', '_blank')}
           />
         </div>
         
