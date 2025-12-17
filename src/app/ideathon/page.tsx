@@ -97,7 +97,7 @@ function Ideathon() {
                 <div className={styles.circle}><RxCheck color="#121212" size={20} /></div>
                 <h2>Participation Requirements</h2>
               </div>
-                <h4 className={styles.pMargin}>1–4 (Written Submission) </h4>
+                
                 <p className={styles.pMargin}>
                 The following requirements must be addressed in a single PDF document that does not exceed 10 pages: <br />
 
