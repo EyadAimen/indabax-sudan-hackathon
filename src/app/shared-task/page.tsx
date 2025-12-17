@@ -303,6 +303,8 @@ function SharedTask() {
               <p className={styles.pMargin}>Sudan-MM 2025 is more than a competition — it’s a national digital initiative. </p>
               <p className={styles.pMargin}>Help us build the foundation for Sudanese AI.</p>
               <p className={styles.pMargin}><strong className="bold">Be part of the team that puts Sudan on the global AI map. </strong></p>
+              <br />
+              <hr className={styles.line}/>
             </div>
             </div>
         </div>
