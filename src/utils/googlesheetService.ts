@@ -43,3 +43,32 @@ export async function submitToGoogleSheets(data: RegistrationData): Promise<{ su
     };
   }
 }
+
+
+
+// utils/googleSheetsService.ts
+
+export async function checkValueExists(testval: string): Promise<boolean> {
+  try {
+    const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+    if (!GOOGLE_SCRIPT_URL) return false;
+
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        action: 'check_existence',
+        value: testval // This is your 'testval'
+      }),
+    });
+
+    if (!response.ok) throw new Error('Network error');
+
+    const data = await response.json();
+    return data.exists === true;
+
+  } catch (error) {
+    console.error('Error checking value:', error);
+    return false;
+  }
+}

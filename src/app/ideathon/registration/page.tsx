@@ -7,6 +7,7 @@ import styles from "./page.module.css";
 import { submitToGoogleSheets } from "@/utils/googlesheetService";
 import FileUpload from "@/components/fileUpload/fileUpload";
 import { useRouter } from "next/navigation";
+import { PassThrough } from "stream";
 
 interface Member {
   name: string;
@@ -48,14 +49,32 @@ function Registration() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [viewForm, setViewForm] = useState(false);
+  const [passwordDisabled, setPasswordDisabled] = useState(false);
   const router = useRouter();
-  const handlePasswordSubmit = () => {
+  const handlePasswordSubmit = async () => {
+    setPasswordDisabled(true);
+    setPasswordError("");
     const correctPassword = "Test1234";
-    if (password === correctPassword) {
-      setViewForm(true);
-    } else {
-      setPasswordError("Incorrect password. Please try again.");
-    }
+    const testValue = "12345";
+
+  // Call YOUR Next.js API, not the Google Script directly
+  const response = await fetch('/api/checkPassword', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ testval: password }),
+  });
+
+  const data = await response.json();
+
+  if (data.exists) {
+    setViewForm(true);
+    setPasswordError("");
+    console.log("Value exists in the Google Sheet!");
+  } else {
+    setPasswordError("Incorrect password. Please try again.");
+    console.log("Value is available.");
+  }
+    setPasswordDisabled(false);
   }
 
   const validateEmail = (email: string): boolean => {
@@ -74,6 +93,8 @@ function Registration() {
       setErrors(prev => ({ ...prev, [field]: "" }));
     }
   };
+
+
 
   const handleMemberChange = (index: number, field: keyof Member, value: string) => {
     const newMembers = [...formData.members];
@@ -207,7 +228,7 @@ return (
             onChange={(value: string) => setPassword(value)}
             error={passwordError}
           />
-          <CustomButton name="Submit" onclick={handlePasswordSubmit} />
+          <CustomButton name={passwordDisabled? "Submitting..." : "Submit"} onclick={handlePasswordSubmit} disabled={passwordDisabled} />
         </div>
       </main>
     ) : (
