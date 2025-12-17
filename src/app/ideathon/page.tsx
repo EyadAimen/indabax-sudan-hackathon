@@ -13,6 +13,7 @@ import khalilLiouane from "@/assets/Khalil Liouane.png";
 import mohamedYousif from "@/assets/Mohamed Yousif.jpg";
 import imadAbbas from "@/assets/Imad Abbas.jpg";
 import savannahJudge from "@/assets/savannah.png";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 
 
@@ -31,6 +32,12 @@ function Ideathon() {
     savannahJudge
   ];
 
+  const peopleLinks = [
+    "https://www.linkedin.com/in/adonese/",
+    "https://www.linkedin.com/in/imadabbas/",
+    "https://www.linkedin.com/company/savannah-innovation-labs/"
+  ]
+
   const presentersNames = ["Mohammed Abdulrahman", "Khalil Liouane"];
   const presentersBio = [
     "AI product builder with a strong background in operations research and applied optimization. Founder of Enigma, where he builds practical AI agents and conversational platforms across multiple sectors, focused on improving operations, scaling reliably, and working in complex, low-resource environments",
@@ -44,6 +51,11 @@ function Ideathon() {
     "Building AI startup in Sudan",
     "From engineer to founder"
   ];
+
+  const presentersLinks = [
+    "https://www.linkedin.com/in/mohamed-abdulrahman/",
+    "https://www.linkedin.com/in/khalilliouane/"
+  ]
 
   const timeLines = [
     {date: "18 DEC", description: "Registration Opens", addInfo: ""},
@@ -77,7 +89,7 @@ function Ideathon() {
 
         <div className={styles.contentContainer}>
           {/* left hand side content */}
-          <div>
+          <div className={styles.leftContent}>
           
           {/* participation requirements */}
           <div>
@@ -94,7 +106,7 @@ function Ideathon() {
                   <li>Provide a clear and feasible AI/ML component.</li>
                   <li>Demonstrate novelty, meaningful impact, and a technically sound application of AI/ML with potential for wide adoption.</li>
                   <li> Present a sustainable business model, including revenue generation and the allocation of future investments or surplus funds.</li>
-                  <li> Include a Proof of Concept (PoC) <strong className="bold">submitted as a demo video only</strong>, demonstrating either a basic prototype or a structured, realistic implementation plan that proves the idea is actionable. </li>
+                  <li> Include a link to a Proof of Concept (PoC) video <strong className="bold">a demo video </strong>, demonstrating either a basic prototype or a structured, realistic implementation plan that proves the idea is actionable. </li>
                 </ol>
                </p>
                <br />
@@ -183,14 +195,10 @@ function Ideathon() {
 
             <hr className={styles.line}/>
             
-
-           
-
-
             {/* Prizes */}
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}><FaTrophy color="#121212" size={20} /></div>
+                <div className={styles.circle}><HiOutlineTrophy  color="#121212" size={20} /></div>
                 <h2>Prizes </h2>
               </div>
               <p className={styles.pMargin}>Details will be announced soon. Awards may include: <br />
@@ -231,6 +239,7 @@ function Ideathon() {
                   peopleNames={peopleNames}
                   peopleBio={peopleBio}
                   peopleImages={peopleImages}
+                  peopleLinks={peopleLinks}
                 />
               </div>
               {/* presenters card */}
@@ -241,6 +250,7 @@ function Ideathon() {
                   peopleBio={presentersBio}
                   peopleImages={presentersImages}
                   presentationTopic={presentingTopics}
+                  peopleLinks={presentersLinks}
                 />
               </div>
             </div>

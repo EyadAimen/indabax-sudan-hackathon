@@ -4,6 +4,7 @@ import Header from "@/components/header/header";
 import styles from "./page.module.css"; 
 import { RxCalendar, RxClipboard, RxFileText, RxMagnifyingGlass, RxPerson, RxRocket, RxStar } from "react-icons/rx";
 import CustomButton from "@/components/button/button";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 function ProblemSolving() {
   return (
@@ -124,6 +125,33 @@ function ProblemSolving() {
             </div>
             <hr className={styles.line}/>
 
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><HiOutlineTrophy color="#121212" size={20} /></div>
+                <h2>Prizes </h2>
+              </div>
+              <p className={styles.pMargin}>Details will be announced soon. Awards may include: <br />
+              <p className={styles.pMargin}>
+                <ul className={styles.list}>
+                  <li>First Place: Prizes valued at up to $400</li>
+                  <li>Second Place: Prizes valued at up to $200</li>
+                  <li>Third Place: Prizes valued at up to $150</li>
+                </ul> 
+              </p>
+              </p>
+              <p className={styles.pMargin}>Additional Opportunity:</p>
+              <p className={styles.pMargin}>
+              <ul className={styles.list}>
+                <li>A 2-month internship with Blue Pulse to support the deployment of the model.</li>
+              </ul>
+              </p>
+              <p className={styles.pMargin}>This opportunity is conditional upon the winning team agreeing to transfer the intellectual property (IP) of the model to Blue Pulse. </p>
+              <p className={styles.pMargin}>- If the team does not agree to transfer the IP, Blue Pulse will offer a small monetary incentive instead.</p>
+            </div>
+            <hr className={styles.line}/>
+
+
+            
             {/* Timeline */}
             <div>
               <div className={styles.subtitle}>

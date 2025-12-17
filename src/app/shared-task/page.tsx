@@ -5,6 +5,7 @@ import { RxCalendar, RxCheck, RxCheckCircled, RxClipboard, RxFile, RxFileText, R
 import CustomButton from "@/components/button/button";
 import { FaTrophy } from "react-icons/fa";
 import { HiOutlineShieldCheck, HiOutlineUserGroup } from "react-icons/hi";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 
 
@@ -219,7 +220,7 @@ function SharedTask() {
               {/* Prizes section */}
             <div>
               <div className={styles.subtitle}>
-                <div className={styles.circle}><FaTrophy color="#121212" size={20} /></div>
+                <div className={styles.circle}><HiOutlineTrophy color="#121212" size={20} /></div>
                 <h2>Prizes </h2>
               </div>
               <p className={styles.pMargin}>Details will be announced soon. Awards may include: <br />
