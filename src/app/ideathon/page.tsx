@@ -5,34 +5,44 @@ import Card from "@/components/card/card";
 import { useRouter } from "next/navigation";
 import PeopleCard from "@/components/peopleCard/peopleCard";
 import TimelineCard from "@/components/timelineCard/timelineCard";
-import { RxCheck, RxCheckCircled, RxFileText, RxInfoCircled, RxListBullet, RxPerson, RxStar } from "react-icons/rx";
+import { RxCheck, RxCheckCircled, RxDashboard, RxEnter, RxFileText, RxInfoCircled, RxListBullet, RxPerson, RxStar } from "react-icons/rx";
 import CustomButton from "@/components/button/button";
+import { FaTrophy } from "react-icons/fa";
+import mohammedAbdulrahman from "@/assets/Mohammed Abdulrahman.jpg"
+import khalilLiouane from "@/assets/Khalil Liouane.png";
+import mohamedYousif from "@/assets/Mohamed Yousif.jpg";
+import imadAbbas from "@/assets/Imad Abbas.jpg";
+import savannahJudge from "@/assets/savannah.png";
 
 
 
 function Ideathon() {
   const router = useRouter();
   
-  const peopleNames = ["Alice Johnson", "Bob Smith", "Charlie Davis"];
+  const peopleNames = ["Mohamed Yousif", "Imad Abbas", "Savannah Judge"];
   const peopleBio = [
-    "Alice is a seasoned AI researcher with a passion for developing innovative machine learning models.",
-    "Bob is a software engineer specializing in full-stack development and cloud computing.",
-    "Charlie is a data scientist focused on extracting insights from large datasets to drive business decisions."
+    "Tech lead at Exinity. Focused on building high-reliability payment systems, distributed backend system architectures, and practical uses of AI to improve engineering productivity and financial access.",
+    "Co-founder & CEO of JobHunt, an AI-powered job search platform redefining how people find jobs. Trusted by 350K+ professionals across MENA. Also, delegate at the Global Shapers Community (an initiative of the World Economic Forum) and the Young AI Leaders Community (ITU)",
+    "Judge from Savannah"
   ];
   const peopleImages = [
-    "/images/people/alice.jpg",
-    "/images/people/bob.jpg",
-    "/images/people/charlie.jpg"
+    mohamedYousif,
+    imadAbbas,
+    savannahJudge
   ];
 
-  const presentersNames = ["Diana Prince", "Ethan Hunt"];
+  const presentersNames = ["Mohammed Abdulrahman", "Khalil Liouane"];
   const presentersBio = [
-    "Diana is an expert in UX/UI design with a knack for creating user-friendly digital experiences.",
-    "Ethan is a cybersecurity specialist dedicated to protecting systems from cyber threats."
+    "AI product builder with a strong background in operations research and applied optimization. Founder of Enigma, where he builds practical AI agents and conversational platforms across multiple sectors, focused on improving operations, scaling reliably, and working in complex, low-resource environments",
+    "A venture builder and writer who moved from engineering into entrepreneurship to work more closely with people, systems, and real-world complexity. He has supported 160+ startups across Africa and the Middle East. He also built Archivart, a contemporary African art gallery, and Sprint Art, an artist incubator that has supported 90 African artists in building sustainable livelihoods from their work. Through his writing, Khalil explores what it means to be human in a world shaped by technology and what it really means to live with intention in the modern world."
   ];
   const presentersImages = [
-    "/images/people/diana.jpg",
-    "/images/people/ethan.jpg"
+    mohammedAbdulrahman,
+    khalilLiouane
+  ];
+  const presentingTopics = [
+    "Building AI startup in Sudan",
+    "From engineer to founder"
   ];
 
   const timeLines = [
@@ -46,99 +56,55 @@ function Ideathon() {
     {date: "23 DEC", description: "Announcement and Winnders", addInfo: ""}
   ];
   
+
+  const checkDate = () => {
+    const currentDate = new Date();
+    const registrationCloseDate = new Date(2025, 11, 20);
+    if (currentDate > registrationCloseDate) {
+      return true;
+    }
+    return false;
+  }
   return (
     <div>
       
       {/* Header of the web */}
       <Header activeID={1}/>
       <main className={styles.page}>
-        <h1>Track 1: <span className={styles.titleOrdange}>IDEATHON</span></h1>
-        <p className={styles.pMargin}>AI and ML - create intelligent solutions leveraging artificial intelligence and data science</p>
+        <h1>Track 1: <span className={styles.titleOrdange}>IDEATHON 2025: Innovate Collaborate Create </span></h1>
+        <p className={styles.pMargin}>The Ideathon is calling all innovators, problem solvers, and creative thinkers This isn’t just a competition; it is a dynamic fusion of talent and ideas where you can team up with individuals from diverse states and backgrounds. Together we’ll tackle some of Sudan’s most critical issues through groundbreaking machine learning projects.</p>
         <hr className={styles.line}/>
 
         <div className={styles.contentContainer}>
           {/* left hand side content */}
           <div>
-            <div>
-              <div className={styles.subtitle}>
-                <div className={styles.circle}><RxInfoCircled color="#121212" size={20} /></div>
-                <h2>About Track</h2>
-              </div>
-              <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-
-            <hr className={styles.line}/>
-            <div>
-              <div className={styles.subtitle}>
-                <div className={styles.circle}><RxListBullet color="#121212" size={20} /></div>
-                <h2>Instructions</h2>
-              </div>
-              <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-
-
-            <hr className={styles.line}/>
-
-            <div>
+          
+          {/* participation requirements */}
+          <div>
               <div className={styles.subtitle}>
                 <div className={styles.circle}><RxCheck color="#121212" size={20} /></div>
                 <h2>Participation Requirements</h2>
               </div>
-              <p className={styles.pMargin}>
+                <h4 className={styles.pMargin}>1–4 (Written Submission) </h4>
+                <p className={styles.pMargin}>
+                The following requirements must be addressed in a single PDF document that does not exceed 10 pages: <br />
+
                 <ol className={styles.list}>
-                  <li>Address a validated, specific problem within the Sudanese context.</li>
-                  <li>Include a feasible AI/ML component that strengthens the value or functionality of the solution.</li>
-                  <li>Demonstrate novelty, meaningful impact, and practical relevance.</li>
-                  <li>Provide a Proof of Concept (POC) — either a very simple prototype or a structured implementation plan showing feasibility.</li>
-                  <li>Present a sustainability model, including potential revenue streams and how resources or future investments will be used.</li>
+                  <li>Address a real, specific, and validated need within the Sudanese market.</li>
+                  <li>Provide a clear and feasible AI/ML component.</li>
+                  <li>Demonstrate novelty, meaningful impact, and a technically sound application of AI/ML with potential for wide adoption.</li>
+                  <li> Present a sustainable business model, including revenue generation and the allocation of future investments or surplus funds.</li>
+                  <li> Include a Proof of Concept (PoC) <strong className="bold">submitted as a demo video only</strong>, demonstrating either a basic prototype or a structured, realistic implementation plan that proves the idea is actionable. </li>
                 </ol>
                </p>
-            </div>
+               <br />
 
+               <h4 className={styles.pMargin}>Who Can Participate? </h4>
+                <p className={styles.pMargin}>Participation is open to anyone passionate about rebuilding Sudan!!</p>
+            </div>
             <hr className={styles.line}/>
-            <div>
-              <div className={styles.subtitle}>
-                <div className={styles.circle}><RxStar color="#121212" size={20} /></div>
-                <h2>Why You Should Join</h2>
-              </div>
-              <p className={styles.pMargin}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
 
-            <hr className={styles.line}/>
-            <div>
-              <div className={styles.subtitle}>
-                <div className={styles.circle}><RxFileText color="#121212" size={20} /></div>
-                <h2>Full Proposal Requirements</h2>
-              </div>
-              <p className={styles.pMargin}>
-                <ol className={styles.list}>
-                  <li><b>Problem Statement & Market Need:</b> Clear definition of the problem, its significance and affected groups.</li>
-                  <li><b>Target Users & Use Cases:</b> Primary beneficiaries and core use cases demonstrating how the solution will be used.</li>
-                  <li><b>Proposed Solution:</b> Full explanation of the solution, value proposition and why it is unique or superior to alternatives.</li>
-                  <li><b>AI/ML Component (Technical Feasibility):</b> Role of AI/ML in the solution, intended models or algorithms, data requirements and sourcing and anticipated technical challenges.</li>
-                  <li><b>Proof of Concept (POC):</b> Participants must demonstrate feasibility through:
-                          <ul className={styles.list}>
-                            <li>A simple prototype (screenshots, basic workflow, mock-up), or</li>
-                            <li>A structured implementation plan with milestones and expected deliverables</li>
-                          </ul>
-                        
-                  </li>
-                  <li><b>Business Model & Sustainability:</b> Revenue model, cost estimates, sustainability approach and how future investments will be used.</li>
-                  <li><b>Scalability & Impact:</b> Potential to scale, expected social, economic, or environmental benefits.</li>
-
-                </ol>
-              </p>
-              <p className={styles.pMargin}>You must Register for the hackathon first, and after receiving the confirmation email you may submit the full proposal here:</p>
-              <div className={styles.buttonContainer} style={{marginTop: "1rem"}}>
-                <CustomButton 
-                  name="Submit full proposal"
-                  onclick={() => router.push('/ideathon/registration')}
-                />
-            </div>
-
-            </div>
-
-            <hr className={styles.line}/>
+             {/* Team Structure */}
             <div>
               <div className={styles.subtitle}>
                 <div className={styles.circle}><RxPerson color="#121212" size={20} /></div>
@@ -154,6 +120,102 @@ function Ideathon() {
               </p>
             </div>
             <hr className={styles.line}/>
+            
+            {/* participation steps */}
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxInfoCircled color="#121212" size={20} /></div>
+                <h2>Important Participation Steps: </h2>
+              </div>
+              <p className={styles.pMargin}>
+                <ol className={styles.list}>
+                  <li>All participants must complete the registration form, which will be used to evaluate eligibility. Selection will depend on the quality and relevance of responses to ensure that only qualifying ideas advance. </li>
+                  <li> Ideas showing strong potential but lacking some components may still be accepted if participants clearly confirm in the registration form that they will provide the missing elements during the competition period. </li>
+                  <li>Accepted ideas will receive an email notification by December 20 with instructions and access to the submission website for official proposal submission.</li>
+                </ol>
+              </p>
+            </div>
+            <hr className={styles.line}/>
+
+
+          
+
+            {/* Your Journey Through the Ideathon 2025  */}
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxDashboard  color="#121212" size={20} /></div>
+                <h2>Your Journey Through the Ideathon 2025 </h2>
+              </div>
+              <h4 className={styles.pMargin}>1. Application & Selection</h4>
+              <p className={styles.pMargin}>
+                <ul className={styles.list}>
+                  <li>Initial Application Form: Submit a brief Form from December 18-20 (12 AM Sudan time). Tell us about your idea, the problem it solves, expected outcomes, and your team</li>
+                  <li> Accepted teams will receive an email by December 15 with login credentials to submit their Full Proposal. Here: </li>
+                </ul>
+              </p>
+              <div className={styles.buttonContainer} style={{marginTop: "1rem"}}>
+                <CustomButton 
+                  name="Submit full proposal"
+                  disabled={checkDate()? false : true}
+                  onclick={() => router.push('/ideathon/registration')}
+                />
+            </div>
+
+          
+            <h4 className={styles.pMargin}>2. During the Ideathon</h4>
+            <p className={styles.pMargin}>
+              <ul className={styles.list}>
+                <li>Expert Mentorship: Receive feedback from senior attendees to strengthen your proposal.</li>
+                <li>Support Sessions: Participate in 2 dedicated sessions (approx. 2 hours each) covering technical and administrative aspects of the competition.</li>
+              </ul>
+            </p>
+
+            <br />
+            <h4 className={styles.pMargin}>3. Refinement & Judging</h4>
+            <p className={styles.pMargin}>
+              <ul className={styles.list}>
+                <li>Full Proposal Submission: Develop and submit a comprehensive proposal based on the required structure.</li>
+                <li> Final Live Pitch: Present your refined project in a live pitch deck on the final day.</li>
+                <li> Judging: A panel of three expert judges will evaluate projects, discuss collectively, and choose the winners. </li>
+              </ul>
+            </p>
+            </div>
+
+            <hr className={styles.line}/>
+            
+
+           
+
+
+            {/* Prizes */}
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><FaTrophy color="#121212" size={20} /></div>
+                <h2>Prizes </h2>
+              </div>
+              <p className={styles.pMargin}>Details will be announced soon. Awards may include: <br />
+                <ul className={styles.list}>
+                  <li>Prizes valued up to $300.</li>
+                  <li>Opportunity to join the Incubation Program at Savanna Innovation labs</li>
+                  <li>Introduction to the winner to the IEEE Entrepreneurship – GITEX Program: <br /> 
+                      (A program that connects entrepreneurs with mentors, investors, and companies during the 
+                      global GITEX technology event.)</li>
+                </ul> 
+              </p>
+            </div>
+            <hr className={styles.line}/>
+            
+            {/* get involved */}
+            <div>
+              <div className={styles.subtitle}>
+                <div className={styles.circle}><RxEnter  color="#121212" size={20} /></div>
+                <h2>Get involved </h2>
+              </div>
+              <p className={styles.pMargin}>Interested in participating? (register Now) 
+              </p>
+            </div>
+            <hr className={styles.line}/>
+
             {/* end of left hand side content */}
             </div>
             {/* right hand side content */}
@@ -178,6 +240,7 @@ function Ideathon() {
                   peopleNames={presentersNames}
                   peopleBio={presentersBio}
                   peopleImages={presentersImages}
+                  presentationTopic={presentingTopics}
                 />
               </div>
             </div>

@@ -25,7 +25,7 @@ export default function Home() {
           <p className={styles.par}>Join us on a wonderful IndabaX Sudan hackathon journey with multiple tracks</p>
         </div>
         <div className={styles.cardSection}>
-          <Card title="Ideathon" description="The Ideathon Track aims to identify high-quality, AI/ML-enabled solutions that address well-defined, real-world challenges in Sudan." 
+          <Card title="Ideathon" description="Innovate,Collaborate, Create. Aims to identify high-quality, AI/ML-enabled solutions that address well-defined, real-world challenges in Sudan." 
                 onTap={()=>handleCardClick("ideathon")}
                 icon={RxLightningBolt}
           />

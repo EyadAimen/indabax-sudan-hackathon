@@ -61,6 +61,14 @@
 }
 
 
+.leftContent {
+  width: 60%;
+}
+
+.cardSection {
+  max-width: 40%;
+}
+
 .cardMargin {
   margin-bottom: 5rem;
 }
@@ -71,7 +79,7 @@
   margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
 
   .contentContainer {
     flex-direction: column;
@@ -84,5 +92,9 @@
     flex-direction: column;
     justify-content: center;
     padding: 11rem 2rem 0rem 2rem;
+  }
+  .cardSection {
+    max-width: 100%;
+    
   }
 }
