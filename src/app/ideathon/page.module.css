@@ -93,6 +93,10 @@
     justify-content: center;
     padding: 11rem 2rem 0rem 2rem;
   }
+  .leftContent {
+    width: 100%;
+    max-width: 100%;  
+  }
   .cardSection {
     max-width: 100%;
     

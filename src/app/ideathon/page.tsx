@@ -106,7 +106,7 @@ function Ideathon() {
                   <li>Provide a clear and feasible AI/ML component.</li>
                   <li>Demonstrate novelty, meaningful impact, and a technically sound application of AI/ML with potential for wide adoption.</li>
                   <li> Present a sustainable business model, including revenue generation and the allocation of future investments or surplus funds.</li>
-                  <li> Include a link to a Proof of Concept (PoC) video <strong className="bold">a demo video </strong>, demonstrating either a basic prototype or a structured, realistic implementation plan that proves the idea is actionable. </li>
+                  <li> Include a link inside the PDF to a Proof of Concept (PoC) video <strong className="bold">a demo video </strong>, demonstrating either a basic prototype or a structured, realistic implementation plan that proves the idea is actionable. </li>
                 </ol>
                </p>
                <br />
