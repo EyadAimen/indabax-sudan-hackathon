@@ -23,6 +23,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
   const [uploadError, setUploadError] = useState('');
   const [fileName, setFileName] = useState('');
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null;
@@ -36,7 +37,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
       setUploadError('Please select a file first');
       return;
     }
-
+    // added disabled state to prevent multiple uploads
+    setDisabled(true);
     setUploading(true);
     setUploadError('');
 
@@ -65,6 +67,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     } catch (err: any) {
       console.error(err);
       setUploadError('Error uploading file. Please try again.');
+      setDisabled(false);
     } finally {
       setUploading(false);
     }
@@ -110,9 +113,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
         <div className={styles.buttonWrapper}>
           <CustomButton
-            name={uploading ? 'Uploading...' : 'Upload'}
+            name={uploading&&disabled ? 'Uploading...' : 'Upload'}
             onclick={handleUpload}
-            disabled={uploading || !file}
+            disabled={uploading || disabled}
           />
         </div>
       </div>

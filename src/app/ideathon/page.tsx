@@ -10,7 +10,7 @@ import CustomButton from "@/components/button/button";
 
 
 
-export default function Home() {
+function Ideathon() {
   const router = useRouter();
   
   const peopleNames = ["Alice Johnson", "Bob Smith", "Charlie Davis"];
@@ -195,3 +195,6 @@ export default function Home() {
     </div>
   );
 }
+
+
+export default Ideathon;

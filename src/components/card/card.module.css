@@ -1,7 +1,5 @@
 
 .cardContainer {
-     
-
     background-color: var(--card-color);
     border-radius: 1rem;
     padding: 1.5rem 2rem; 
@@ -17,7 +15,7 @@
     transition: scale 0.2s ease;
 }
 
-/* Optional hover effect */
+
 .cardContainer:hover {
     border: 1px solid var(--primary-color);
     scale: 1.05;
@@ -41,6 +39,9 @@
     font-weight: 700;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .trackDescription {
