@@ -162,7 +162,7 @@ function Ideathon() {
               <p className={styles.pMargin}>
                 <ul className={styles.list}>
                   <li>Initial Application Form: Submit a brief Form from December 18-20 (12 AM Sudan time). Tell us about your idea, the problem it solves, expected outcomes, and your team</li>
-                  <li> Accepted teams will receive an email by December 15 with login credentials to submit their Full Proposal. Here: </li>
+                  <li> Accepted teams will receive an email by December 20 with login credentials to submit their Full Proposal. Here: </li>
                 </ul>
               </p>
               <div className={styles.buttonContainer} style={{marginTop: "1rem"}}>
