@@ -18,7 +18,7 @@ interface Member {
 interface FormData {
   name: string;
   email: string;
-  submissionType: string;
+  leaderName: string;
   
   projectTitle: string;
   projectDocument: string;
@@ -32,7 +32,7 @@ function Registration() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    submissionType: "",
+    leaderName: "",
     
     projectTitle: "",
     projectDocument: ""
@@ -171,7 +171,7 @@ function Registration() {
       const dataToSubmit = {
         name: formData.name,
         email: formData.email,
-        submissionType: formData.submissionType,
+        submissionType: formData.leaderName,
         projectTitle: formData.projectTitle,
         projectDocument: formData.projectDocument,
         timestamp: new Date().toISOString()
@@ -185,7 +185,7 @@ function Registration() {
         setFormData({
           name: "",
           email: "",
-          submissionType: "",
+          leaderName: "",
           projectTitle: "",
           projectDocument: ""
         });
@@ -246,7 +246,7 @@ return (
                   <h2 className={styles.sectionTitle}>Team Information</h2>
                   <div className={styles.fieldGroup}>
                     <TextField
-                      label="Team Name"
+                      label="Team Name (If you are a team, or your full name)"
                       placeholder="Enter your team name"
                       type="text"
                       value={formData.name}
@@ -254,15 +254,17 @@ return (
                       error={errors.name}
                       required
                     />
+
                     <TextField
-                      label="Submission Type"
-                      placeholder="Enter your submission type"
+                      label="Team Leader Full Name"
+                      placeholder="Enter your full name"
                       type="text"
-                      value={formData.submissionType}
-                      onChange={(value: string) => handleInputChange("submissionType", value)}
-                      error={errors.submissionType}
+                      value={formData.leaderName}
+                      onChange={(value: string) => handleInputChange("leaderName", value)}
+                      error={errors.leaderName}
                       required
                     />
+                    
                     <TextField
                       label="Team Leader Email Address"
                       placeholder="your.email@example.com"

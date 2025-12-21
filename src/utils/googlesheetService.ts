@@ -3,7 +3,7 @@
 export interface RegistrationData {
   name: string;
   email: string;
-  submissionType: string;
+  leaderName: string;
   projectTitle: string;
   projectDocument: string;
   timestamp: string;
