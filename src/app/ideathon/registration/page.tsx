@@ -254,11 +254,11 @@ return (
               <div className={styles.form}>
                 {/* Main User Section */}
                 <section className={styles.section}>
-                  <h2 className={styles.sectionTitle}>Team Leader Information</h2>
+                  <h2 className={styles.sectionTitle}>Team Information</h2>
                   <div className={styles.fieldGroup}>
                     <TextField
-                      label="Full Name"
-                      placeholder="Enter your full name"
+                      label="Team Name"
+                      placeholder="Enter your team name"
                       type="text"
                       value={formData.name}
                       onChange={(value: string) => handleInputChange("name", value)}

@@ -3,8 +3,8 @@
 export interface RegistrationData {
   name: string;
   email: string;
-  phone: string;
-  members: string;
+  submissionType: string;
+  
   projectTitle: string;
   projectDocument: string;
   timestamp: string;
@@ -46,7 +46,7 @@ export async function submitToGoogleSheets(data: RegistrationData): Promise<{ su
 
 
 
-// utils/googleSheetsService.ts
+
 
 export async function checkValueExists(testval: string): Promise<boolean> {
   try {
