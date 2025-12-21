@@ -16,7 +16,6 @@ interface Member {
 }
 
 interface FormData {
-  name: string;
   email: string;
   leaderName: string;
   
@@ -30,10 +29,8 @@ interface Errors {
 
 function Registration() {
   const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
     leaderName: "",
-    
+    email: "",
     projectTitle: "",
     projectDocument: ""
   });
@@ -77,10 +74,10 @@ function Registration() {
     return emailRegex.test(email);
   };
 
-  const validatePhone = (phone: string): boolean => {
-    const phoneRegex = /^[\d\s\-+()]{10,}$/;
-    return phoneRegex.test(phone);
-  };
+  // const validatePhone = (phone: string): boolean => {
+  //   const phoneRegex = /^[\d\s\-+()]{10,}$/;
+  //   return phoneRegex.test(phone);
+  // };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -111,8 +108,8 @@ function Registration() {
     const newErrors: Errors = {};
 
     // Validate main user fields
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+    if (!formData.leaderName.trim()) {
+      newErrors.leaderName = "Name is required";
     }
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
@@ -169,9 +166,8 @@ function Registration() {
       //   .join(",");
 
       const dataToSubmit = {
-        name: formData.name,
-        email: formData.email,
         leaderName: formData.leaderName,
+        email: formData.email,
         projectTitle: formData.projectTitle,
         projectDocument: formData.projectDocument,
         timestamp: new Date().toISOString()
@@ -183,9 +179,8 @@ function Registration() {
       else {
         setSubmitMessage("Registration submitted successfully!");
         setFormData({
-          name: "",
-          email: "",
           leaderName: "",
+          email: "",
           projectTitle: "",
           projectDocument: ""
         });
@@ -245,18 +240,9 @@ return (
                 <section className={styles.section}>
                   <h2 className={styles.sectionTitle}>Team Information</h2>
                   <div className={styles.fieldGroup}>
-                    <TextField
-                      label="Team Name (If you are a team, or your full name)"
-                      placeholder="Enter your team name"
-                      type="text"
-                      value={formData.name}
-                      onChange={(value: string) => handleInputChange("name", value)}
-                      error={errors.name}
-                      required
-                    />
 
                     <TextField
-                      label="Team Leader Full Name"
+                      label="Team Leader/Individual Full Name"
                       placeholder="Enter your full name"
                       type="text"
                       value={formData.leaderName}
@@ -266,7 +252,7 @@ return (
                     />
                     
                     <TextField
-                      label="Team Leader Email Address"
+                      label="Team Leader/Individual Email Address"
                       placeholder="your.email@example.com"
                       type="email"
                       value={formData.email}

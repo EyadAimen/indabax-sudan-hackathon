@@ -1,9 +1,8 @@
 // utils/googleSheetsService.ts
 
 export interface RegistrationData {
-  name: string;
-  email: string;
   leaderName: string;
+  email: string;
   projectTitle: string;
   projectDocument: string;
   timestamp: string;
