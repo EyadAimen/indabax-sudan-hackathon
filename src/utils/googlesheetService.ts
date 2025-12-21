@@ -4,7 +4,6 @@ export interface RegistrationData {
   name: string;
   email: string;
   submissionType: string;
-  
   projectTitle: string;
   projectDocument: string;
   timestamp: string;

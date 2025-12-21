@@ -18,8 +18,8 @@ interface Member {
 interface FormData {
   name: string;
   email: string;
-  phone: string;
-  members: Member[];
+  submissionType: string;
+  
   projectTitle: string;
   projectDocument: string;
 }
@@ -32,13 +32,8 @@ function Registration() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
-    phone: "",
-    members: [
-      { name: "", email: "", phone: "" },
-      { name: "", email: "", phone: "" },
-      { name: "", email: "", phone: "" },
-      { name: "", email: "", phone: "" }
-    ],
+    submissionType: "",
+    
     projectTitle: "",
     projectDocument: ""
   });
@@ -96,16 +91,16 @@ function Registration() {
 
 
 
-  const handleMemberChange = (index: number, field: keyof Member, value: string) => {
-    const newMembers = [...formData.members];
-    newMembers[index][field] = value;
-    setFormData(prev => ({ ...prev, members: newMembers }));
+  // const handleMemberChange = (index: number, field: keyof Member, value: string) => {
+  //   const newMembers = [...formData.members];
+  //   newMembers[index][field] = value;
+  //   setFormData(prev => ({ ...prev, members: newMembers }));
     
-    const errorKey = `member${index}_${field}`;
-    if (errors[errorKey]) {
-      setErrors(prev => ({ ...prev, [errorKey]: "" }));
-    }
-  };
+  //   const errorKey = `member${index}_${field}`;
+  //   if (errors[errorKey]) {
+  //     setErrors(prev => ({ ...prev, [errorKey]: "" }));
+  //   }
+  // };
 
   // Callback function for the FileUpload component
   const handleFileUploaded = (fileLink: string) => {
@@ -124,11 +119,11 @@ function Registration() {
     } else if (!validateEmail(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    } else if (!validatePhone(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number";
-    }
+    // if (!formData.phone.trim()) {
+    //   newErrors.phone = "Phone number is required";
+    // } else if (!validatePhone(formData.phone)) {
+    //   newErrors.phone = "Please enter a valid phone number";
+    // }
     if (!formData.projectTitle.trim()) {
       newErrors.projectTitle = "Project title is required";
     }
@@ -137,18 +132,19 @@ function Registration() {
     }
 
     // Validate member fields (only if any field is filled)
-    formData.members.forEach((member, index) => {
-      const hasAnyField = member.name || member.email || member.phone;
+  //   formData.members.forEach((member, index) => {
+  //     const hasAnyField = member.name || member.email || member.phone;
       
-      if (hasAnyField) {
-        if (member.email && !validateEmail(member.email)) {
-          newErrors[`member${index}_email`] = "Please enter a valid email address";
-        }
-        if (member.phone && !validatePhone(member.phone)) {
-          newErrors[`member${index}_phone`] = "Please enter a valid phone number";
-        }
-      }
-    });
+  //     if (hasAnyField) {
+  //       if (member.email && !validateEmail(member.email)) {
+  //         newErrors[`member${index}_email`] = "Please enter a valid email address";
+  //       }
+  //       if (member.phone && !validatePhone(member.phone)) {
+  //         newErrors[`member${index}_phone`] = "Please enter a valid phone number";
+  //       }
+  //     }
+  //   }
+  // );
 
     
 
@@ -167,16 +163,15 @@ function Registration() {
 
     try {
       // Format members data as comma-separated strings
-      const membersData = formData.members
-        .filter(m => m.name || m.email || m.phone)
-        .map(m => `${m.name}|${m.email}|${m.phone}`)
-        .join(",");
+      // const membersData = formData.members
+      //   .filter(m => m.name || m.email || m.phone)
+      //   .map(m => `${m.name}|${m.email}|${m.phone}`)
+      //   .join(",");
 
       const dataToSubmit = {
         name: formData.name,
         email: formData.email,
-        phone: formData.phone,
-        members: membersData,
+        submissionType: formData.submissionType,
         projectTitle: formData.projectTitle,
         projectDocument: formData.projectDocument,
         timestamp: new Date().toISOString()
@@ -190,13 +185,7 @@ function Registration() {
         setFormData({
           name: "",
           email: "",
-          phone: "",
-          members: [
-            { name: "", email: "", phone: "" },
-            { name: "", email: "", phone: "" },
-            { name: "", email: "", phone: "" },
-            { name: "", email: "", phone: "" }
-          ],
+          submissionType: "",
           projectTitle: "",
           projectDocument: ""
         });
@@ -266,7 +255,16 @@ return (
                       required
                     />
                     <TextField
-                      label="Email Address"
+                      label="Submission Type"
+                      placeholder="Enter your submission type"
+                      type="text"
+                      value={formData.submissionType}
+                      onChange={(value: string) => handleInputChange("submissionType", value)}
+                      error={errors.submissionType}
+                      required
+                    />
+                    <TextField
+                      label="Team Leader Email Address"
                       placeholder="your.email@example.com"
                       type="email"
                       value={formData.email}
@@ -274,15 +272,7 @@ return (
                       error={errors.email}
                       required
                     />
-                    <TextField
-                      label="Phone Number"
-                      placeholder="+249 12-345 6789"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(value: string) => handleInputChange("phone", value)}
-                      error={errors.phone}
-                      required
-                    />
+                    
                   </div>
                 </section>
     
