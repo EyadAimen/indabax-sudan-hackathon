@@ -171,7 +171,7 @@ function Registration() {
       const dataToSubmit = {
         name: formData.name,
         email: formData.email,
-        submissionType: formData.leaderName,
+        leaderName: formData.leaderName,
         projectTitle: formData.projectTitle,
         projectDocument: formData.projectDocument,
         timestamp: new Date().toISOString()
